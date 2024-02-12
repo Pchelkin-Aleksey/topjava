@@ -1,6 +1,5 @@
 package ru.javawebinar.topjava.util;
 
-import org.jetbrains.annotations.NotNull;
 import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.model.MealTo;
 
