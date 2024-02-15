@@ -10,15 +10,17 @@ import java.util.List;
 
 public class InMemoryUserRepository implements UserRepository {
     private static final Logger log = LoggerFactory.getLogger(InMemoryUserRepository.class);
-    @Override
-    public boolean delete(int id) {
-        log.info("delete {}", id);
-        return true;
-    }
+
     @Override
     public User save(User user) {
         log.info("save {}", user);
         return user;
+    }
+
+    @Override
+    public boolean delete(int id) {
+        log.info("delete {}", id);
+        return true;
     }
 
     @Override

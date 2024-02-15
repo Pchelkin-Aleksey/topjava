@@ -4,7 +4,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean class="ru.javawebinar.topjava.repository.inmemory.InMemoryUserRepository" id="inmemoryUserRepository"/>
+    <bean class="ru.javawebinar.topjava.repository.inmemory.InMemoryMealRepository" id="inmemoryMealRepository"/>
 
-
+    <bean class="ru.javawebinar.topjava.service.UserService">
+        <constructor-arg name="repository" ref="inmemoryUserRepository"/>
+    </bean>
 </beans>
 
