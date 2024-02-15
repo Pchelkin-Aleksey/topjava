@@ -1,9 +1,6 @@
 package ru.javawebinar.topjava.model;
 
-import java.util.Date;
-import java.util.EnumSet;
-import java.util.Set;
-
+import java.util.*;
 import static ru.javawebinar.topjava.util.MealsUtil.DEFAULT_CALORIES_PER_DAY;
 
 public class User extends AbstractNamedEntity {
@@ -11,20 +8,20 @@ public class User extends AbstractNamedEntity {
     private String password;
     private boolean enabled;
     private Date registered = new Date();
-    private Set<Role> roles;
+    private Collection<Role> roles;
     private int caloriesPerDay;
 
-    public User(Integer id, String name, String email, String password, Role role, Role... roles) { //Role role (это для сранения или что? )  Role... roles  - это перечесление?
-        this(id, name, email, password, DEFAULT_CALORIES_PER_DAY, true, EnumSet.of(role, roles));
+    public User(Integer id, String name, String email, String password, Role... roles) { //Role role (это для сранения или что? )  Role... roles  - это перечесление?
+        this(id, name, email, password, DEFAULT_CALORIES_PER_DAY, true, Arrays.asList(roles));
     }
 
-    public User(Integer id, String name, String email, String password, int caloriesPerDay, boolean enabled, Set<Role> roles) {
+    public User(Integer id, String name, String email, String password, int caloriesPerDay, boolean enabled, Collection<Role> roles) {
         super(id, name);
         this.email = email;
         this.password = password;
         this.caloriesPerDay = caloriesPerDay;
         this.enabled = enabled;
-        this.roles = roles;
+        setRole(roles);
     }
 
     public String getEmail() {
@@ -63,12 +60,16 @@ public class User extends AbstractNamedEntity {
         return enabled;
     }
 
-    public Set<Role> getRoles() {
+    public Collection<Role> getRoles() {
         return roles;
     }
 
     public String getPassword() {
         return password;
+    }
+
+    public void setRole(Collection<Role> roles){
+        this.roles = roles;
     }
 
     @Override
